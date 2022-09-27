@@ -1,16 +1,13 @@
-import React, { useState, useRef, useMemo, useCallback, useEffect } from 'react';
+import React from 'react';
 import Hello from './Hello';
 import './App.css'
 import Wrapper from './Wrapper';
 import InputSample from './InputSample';
 import InputSampleMulti from './InputSampleMulti';
-import UserList from './UserList';
-import CreateUser from './createUser';
-
-function countActiveUsers(users) {
-  console.log('활성 사용자 수를 세는중...');
-  return users.filter(user => user.active).length;
-}
+import Counter from './Counter';
+import CounterUseReducer from './CounterUseReducer';
+import CreateUsersAndListRender from './CreateUsersAndListRender';
+import CreateUsersAndListRenderUseReducer from './CreateUsersAndListRenderUseReducer';
 
 function App() {
   const name = 'React';
@@ -20,72 +17,6 @@ function App() {
     fontSize: 24,
     padding: '1rem'
   };
-  const [inputs, setInputs] = useState({
-    username: '',
-    email: ''
-  });
-  const { username, email } = inputs;
-  const onChange = useCallback(e => {
-      const { name, value } = e.target;
-      setInputs(inputs => ({
-        ...inputs,
-        [name]: value
-      }));
-    }, 
-    []
-  );
-
-  const [users, setUsers] = useState([
-    {
-      id: 1,
-      username: 'velopert',
-      email: 'public.velopert@gmail.com',
-      active: true
-    },
-    {
-      id: 2,
-      username: 'tester',
-      email: 'tester@example.com',
-      active: false
-    },
-    {
-      id: 3,
-      username: 'liz',
-      email: 'liz@example.com',
-      active: false
-    }
-  ]);
-
-  const nextId = useRef(4); // useRef() 로 변수 관리하기
-
-  const onCreate = useCallback( () => {
-    const user = {
-      id: nextId.current,
-      username,
-      email
-    };
-    // setUsers([...users, user]); // spread 방식
-    setUsers(users => users.concat(user)); // .concat 방식
-
-    setInputs({
-      username: '',
-      email: ''
-    });
-    nextId.current += 1;
-  }, [username, email]);
-
-  const onRemove = useCallback(id => {
-    // user.id 가 파라미터로 일치하지 않는 원소만 추출해서 새로운 배열을 생성 = user.id 가 id 인 것을 제거
-    setUsers(users => users.filter(user => user.id !== id));
-  }, []);
-
-  const onToggle = useCallback(id => {
-    setUsers(users.map(user =>
-        user.id === id ? { ...user, active: !user.active } : user
-    ));
-  }, [users]);
-
-  const count = useMemo(() => countActiveUsers(users), [users]);
 
   return (
     <> {/* Fragment */}
@@ -110,6 +41,10 @@ function App() {
           </Wrapper>
         </li>
         <li>
+          <h2>useState()로 상태 관리</h2>
+          <Counter />
+        </li>
+        <li>
           <h2>input 상태 관리</h2>
           <InputSample />
         </li>
@@ -119,13 +54,13 @@ function App() {
         </li>
         <li>
           <h2>배열 렌더링 / useRef()로 변수 관리 / 배열 항목 추가, 제거, 수정, useEffect, useMemo, useCallback, React.memo</h2>
-          <CreateUser 
-          username={username}
-          email={email}
-          onChange={onChange}
-          onCreate={onCreate} />
-          <UserList users={users} onRemove={onRemove} onToggle={onToggle} />
-          <div>활성사용자 수 : {count}</div>
+          <CreateUsersAndListRender />
+        </li>
+        <li>
+          <h2>useReducer()로 상태 관리 </h2>
+          <CounterUseReducer />
+          <h3><mark>useReducer()</mark> 을 사용해서 상태 추가, 제거 수정 관리</h3>
+          <CreateUsersAndListRenderUseReducer />
         </li>
       </ul>
     </>
