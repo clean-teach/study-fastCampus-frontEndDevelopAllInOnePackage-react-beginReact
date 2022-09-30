@@ -1,8 +1,6 @@
-import React, { createContext, useCallback, useMemo, useReducer, useRef } from 'react';
-import CreateUser from './createUser';
-import useInputs from './hooks/useInputs';
-import useInputsUseReducer from './hooks/useInputsUseReducer';
-import UserList from './UserList';
+import React, { createContext, useMemo, useReducer } from 'react';
+import CreateUserContextAPI from './CreateUserContextAPI';
+import UserListContextAPI from './UserListContextAPI';
 
 function countActiveUsers(users) {
     console.log('활성 사용자 수를 세는중...');
@@ -61,41 +59,14 @@ export const UserDispatch = createContext(null);
 
 function CreateUsersAndListRenderUseReducer() {
     const [state, dispatch] = useReducer(reducer, initialState);
-
     const {users} = state;
-    const [{username, email}, onChange, onReset] = useInputsUseReducer({
-        username: '',
-        email: ''
-    });
-
-    const nextId = useRef(4);
-
-    const onCreate = useCallback(() => {
-        dispatch({
-            type: 'CREATE_USER',
-            user: {
-                id: nextId.current += 1,
-                username,
-                email
-            }
-        });
-        onReset();
-        nextId.current += 1;
-    }, [username, email, onReset]);
 
     const count = useMemo(() => countActiveUsers(users), [users]);
     
     return (
         <UserDispatch.Provider value={dispatch}>
-            <CreateUser 
-                username={username}
-                email={email}
-                onChange={onChange}
-                onCreate={onCreate}
-            />
-            <UserList
-                users={users}
-            />
+            <CreateUserContextAPI />
+            <UserListContextAPI users={users} />
             <div>활성사용자 수 : { count }</div>
         </UserDispatch.Provider>
     );

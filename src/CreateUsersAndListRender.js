@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo, useRef, useState } from 'react';
-import CreateUser from './createUser';
+import CreateUser from './CreateUser';
 import UserList from './UserList';
 
 function countActiveUsers(users) {
