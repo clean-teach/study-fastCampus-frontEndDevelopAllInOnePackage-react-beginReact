@@ -41,7 +41,7 @@ function App() {
           </Wrapper>
         </li>
         <li>
-          <h2>useState()로 상태 관리</h2>
+          <h2><mark>useState()</mark>로 상태 관리</h2>
           <Counter />
         </li>
         <li>
@@ -49,17 +49,17 @@ function App() {
           <InputSample />
         </li>
         <li>
-          <h2>input 여러개 상태 관리 및 useRef로 DOM 선택</h2>
+          <h2>input 여러개 상태 관리 및 <mark>useRef</mark>로 DOM 선택</h2>
           <InputSampleMulti/>
         </li>
         <li>
-          <h2>배열 렌더링 / useRef()로 변수 관리 / 배열 항목 추가, 제거, 수정, useEffect, useMemo, useCallback, React.memo</h2>
+          <h2>배열 렌더링 / <mark>useRef()</mark>로 변수 관리 / 배열 항목 추가, 제거, 수정, <mark>useEffect</mark>, <mark>useMemo</mark>, <mark>useCallback</mark>, <mark>React.memo</mark></h2>
           <CreateUsersAndListRender />
         </li>
         <li>
           <h2>useReducer()로 상태 관리 </h2>
           <CounterUseReducer />
-          <h3><mark>useReducer()</mark> 을 사용해서 상태 추가, 제거 수정 관리 및 <mark>커스텀 Hook</mark> 사용해보기</h3>
+          <h3><mark>useReducer()</mark> 을 사용해서 상태 추가, 제거 수정 관리 / <mark>커스텀 Hook</mark> 사용해보기 / <mark>Context API</mark> 를 사용한 전역 값 관리</h3>
           <CreateUsersAndListRenderUseReducer />
         </li>
       </ul>
