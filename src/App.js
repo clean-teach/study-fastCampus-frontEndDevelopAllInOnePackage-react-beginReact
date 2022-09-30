@@ -59,7 +59,7 @@ function App() {
         <li>
           <h2>useReducer()로 상태 관리 </h2>
           <CounterUseReducer />
-          <h3><mark>useReducer()</mark> 을 사용해서 상태 추가, 제거 수정 관리 / <mark>커스텀 Hook</mark> 사용해보기 / <mark>Context API</mark> 를 사용한 전역 값 관리</h3>
+          <h3><mark>useReducer()</mark> 을 사용해서 상태 추가, 제거 수정 관리 / <mark>커스텀 Hook</mark> 사용해보기 / <mark>Context API</mark> 를 사용한 전역 값 관리 / <mark>Immer</mark>를 사용한 더 쉬운 불변성 관리</h3>
           <CreateUsersAndListRenderUseReducer />
         </li>
       </ul>
