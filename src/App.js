@@ -8,6 +8,8 @@ import Counter from './Counter';
 import CounterUseReducer from './CounterUseReducer';
 import CreateUsersAndListRender from './CreateUsersAndListRender';
 import CreateUsersAndListRenderUseReducer from './CreateUsersAndListRenderUseReducer';
+import HelloClass from './HelloClass';
+import CounterClass from './CounterClass';
 
 function App() {
   const name = 'React';
@@ -61,6 +63,12 @@ function App() {
           <CounterUseReducer />
           <h3><mark>useReducer()</mark> 을 사용해서 상태 추가, 제거 수정 관리 / <mark>커스텀 Hook</mark> 사용해보기 / <mark>Context API</mark> 를 사용한 전역 값 관리 / <mark>Immer</mark>를 사용한 더 쉬운 불변성 관리</h3>
           <CreateUsersAndListRenderUseReducer />
+        </li>
+        <li>
+          <h2>클래스형 컴포넌트</h2>
+          <HelloClass color="red" isSpecial />
+          <h3>커스텀 메서드 만들기 / this가 컴포넌트 인스턴스를 가르키게 만들기 / 상태 선언하기 / 상태 업데이트하기 / setState 의 함수형 업데이트</h3>
+          <CounterClass />
         </li>
       </ul>
     </>
