@@ -10,6 +10,8 @@ import CreateUsersAndListRender from './CreateUsersAndListRender';
 import CreateUsersAndListRenderUseReducer from './CreateUsersAndListRenderUseReducer';
 import HelloClass from './HelloClass';
 import CounterClass from './CounterClass';
+import UserErrorCatch from './ErrorCatch';
+import ErrorBoundary from './ErrorBoundary';
 
 function App() {
   const name = 'React';
@@ -18,6 +20,10 @@ function App() {
     color: 'aqua',
     fontSize: 24,
     padding: '1rem'
+  };
+  const user = {
+    id: 1,
+    username: 'velopert'
   };
 
   return (
@@ -69,6 +75,13 @@ function App() {
           <HelloClass color="red" isSpecial />
           <h3>커스텀 메서드 만들기 / this가 컴포넌트 인스턴스를 가르키게 만들기 / 상태 선언하기 / 상태 업데이트하기 / setState 의 함수형 업데이트</h3>
           <CounterClass />
+        </li>
+        <li>
+          <h2>componentDidCatch 로 에러 잡아내기 / Sentry 연동</h2>
+          {/* <UserErrorCatch user={user} /> */}
+          <ErrorBoundary>
+            <UserErrorCatch />
+          </ErrorBoundary>
         </li>
       </ul>
     </>
